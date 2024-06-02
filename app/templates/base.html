@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NeuronalHub{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='icons/bot_icon.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://kit.fontawesome.com/ee0f2a0585.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">NHub</a>
+        <ul>
+            <li><a href="{{ url_for('main.home') }}">Home</a></li>
+            <li><a href="{{ url_for('main.regression', user_id=1) }}">Regression</a></li>
+            <li><a href="{{ url_for('main.classification') }}">Classification</a></li>
+        </ul>
+    </header>
+
+    <section class="banner">
+        <h1 class="banner-title" id="banner-text"></h1>
+        <div class="cursor" id="cursor"></div>
+        <div class="area">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="air air1"></div>
+            <div class="air air2"></div>
+            <div class="air air3"></div>
+            <div class="air air4"></div>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function() {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var footer = document.querySelector("footer");
+            if (window.scrollY === 0) {
+                footer.style.transition = "transform 0.6s";
+                footer.style.transform = "translateY(100%)";
+            }
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY === 0) {
+                    footer.style.transition = "transform 0.6s";
+                    footer.style.transform = "translateY(100%)";
+                } else {
+                    footer.style.transition = "transform 0.6s";
+                    footer.style.transform = "translateY(0)";
+                }
+            });
+        });
+        
+        const text = "Welcome To NeuronalHub";
+        const speed = 100; // Velocidad de escritura
+
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("banner-text").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            } else {
+                document.getElementById("cursor").style.opacity = "1"; // Mostrar el cursor
+            }
+        }
+
+        // Llama a la función typeWriter después de que el contenido se haya cargado
+        document.addEventListener("DOMContentLoaded", function() {
+            typeWriter();
+        });
+
+    </script>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-text">
+                <p>&copy; 2024 AI PROGRAMMERS</p>
+            </div>
+            <div class="footer-icons">
+                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-solid fa-newspaper"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

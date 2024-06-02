@@ -1,0 +1,72 @@
+<!-- home.html -->
+{% extends 'base.html' %}
+
+{% block title %}NeuronalHub{% endblock %}
+
+{% block content %}
+<div class="introContainer">
+    <h2 class="introTitle">Neural Networks and Deep Learning</h2>
+    <h3 class="contTitle">Discover how neural networks and deep learning are transforming the digital world, from machine translation to image recognition. Explore concepts, applications and advances on this page designed for beginners and experts alike.</h3>
+</div>
+
+<div class="cardsContainer">
+    <div class="card">
+        <div class="content">
+            <div class="front">
+                <p>What are Neural Networks?</p>
+            </div>
+            <div class="back">
+                <p>In the age of information and artificial intelligence, neural networks and deep learning have become fundamental pillars of technological advancement. From machine translation to image recognition, these technologies are transforming the way we interact with the digital world. This page is dedicated to exploring the concepts, applications and advances in neural networks and deep learning, offering a comprehensive overview for both beginners and experts in the field.</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <div class="front">
+                <p>What is Regression?</p>
+            </div>
+            <div class="back">
+                <p>It refers to a type of statistical modeling technique used to predict numerical values ​​based on previously observed data. The main objective of regression is to establish the relationship between one or more independent variables (also called characteristics or predictors) and a dependent variable (also known as the target variable) by fitting a mathematical function. This mathematical function can be linear or non-linear, depending on the nature of the data and the relationship between the variables.</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <div class="front">
+                <p>What is Classification?</p>
+            </div>
+            <div class="back">
+                <p>Les a supervised learning technique used to categorize or label data into different classes or categories. The goal is to assign a label or class to a data instance based on its observed characteristics. In other words, classification seeks to learn a model that can distinguish between different classes from the provided training data.
+                During the training process, the classification model is fine-tuned using labeled examples, where each data instance is associated with a known class.</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <div class="front">
+                <p>Applications and Impact.</p>
+            </div>
+            <div class="back">
+                <ul>
+                    <p>The applications of neural networks and deep learning are vast and varied. In the health sector, they are used to diagnose diseases and personalize treatments. In the financial industry, they help detect fraud and predict market trends. Additionally, these technologies are revolutionizing the way we interact with smart devices, from virtual assistants to recommendation systems. 
+                    The applications and impact of neural networks and deep learning are truly vast and are transforming a variety of industries.</p>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    const cards = document.querySelectorAll('.card');
+
+    
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            
+            card.classList.toggle('flipped');
+        });
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,599 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+h2, p {
+    color: #000000;
+}
+
+.content{
+    align-items: center;
+    color: #000000;
+    z-index: 1000;
+}
+
+body {
+    background: #fff;
+    min-height: 200vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 1000;
+}
+
+header.sticky {
+    padding: 5px 100px;
+    background: #fff;
+}
+
+header.sticky ul li a {
+    color: #3586ff;
+    font-weight: bold;
+}
+
+header.sticky .logo {
+    color: #3586ff;
+}
+
+header .logo {
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    position: relative;
+    list-style: none;
+}
+
+header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: 0.6s;
+}
+
+.banner {
+    padding: auto;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #3586ff;
+    overflow: hidden;
+    text-align: center;
+}
+
+.banner-title {
+    position: absolute;
+    top: 50%; /* Colocar el título en el centro vertical */
+    left: 50%; /* Colocar el título en el centro horizontal */
+    transform: translate(-50%, -50%); /* Ajustar el título al centro */
+    color: #fff;
+    font-size: 3em;
+    z-index: 1; /* Asegurar que el título esté encima del fondo animado */
+}
+
+.banner .area {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.banner .circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.banner .circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+}
+
+.banner .circles li:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+.banner .circles li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.banner .circles li:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.banner .circles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.banner .circles li:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.banner .circles li:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.banner .circles li:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.banner .circles li:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.banner .circles li:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.banner .circles li:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+.banner .air {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
+    background-size: 1000px 100px;
+}
+
+.banner .air.air1 {
+    animation: wave 30s linear infinite;
+    z-index: 1000;
+    opacity: 1;
+    animation-delay: 0s;
+    bottom: 0;
+}
+
+.banner .air.air2 {
+    animation: wave2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+}
+
+.banner .air.air3 {
+    animation: wave 30s linear infinite;
+    z-index: 998;
+    opacity: 0.2;
+    animation-delay: -2s;
+    bottom: 15px;
+}
+
+.banner .air.air4 {
+    animation: wave2 5s linear infinite;
+    z-index: 997;
+    opacity: 0.7;
+    animation-delay: -5s;
+    bottom: 20px;
+}
+
+@keyframes wave {
+    0% {
+        background-position-x: 0px;
+    }
+
+    100% {
+        background-position-x: 1000px;
+    }
+}
+
+@keyframes wave2 {
+    0% {
+        background-position-x: 0px;
+    }
+
+    100% {
+        background-position-x: -1000px;
+    }
+}
+
+/*Footer*/
+
+footer {
+    background-color: #3586ff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.6s;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-icons a {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.footer-icons a:hover {
+    color: #ccc;
+}
+
+.footer-text p {
+    color: #fff;
+    margin: 0;
+}
+
+/* Ajuste para evitar que el footer tape las tarjetas */
+main {
+    margin-bottom: 100px; /* Ajusta según sea necesario */
+}
+
+.cursor {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 325px);
+    transform: translateY(-50%);
+    width: 2px;
+    height: 40px;
+    background-color: #fff;
+    animation: cursorBlink 0.8s infinite;
+    opacity: 0;
+}
+
+@keyframes cursorBlink {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/*Styles Home*/
+
+.introContainer {
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    text-align: center;
+}
+
+.introTitle {
+    color: #3586ff;
+}
+
+.contTitle{
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.cardsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    perspective: 500px;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+    Overflow: visible;
+}
+
+.card.flipped .content {
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
+}
+
+.front {
+    position: absolute;
+    height: auto; /* Cambiar de height fijo a auto */
+    width: 100%;
+    background: transparent;
+    color: #3586ff;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto; /* Permitir que el contenido se desplace si es necesario */
+    margin-top: 80px;
+}
+
+.back{
+    position: absolute;
+    height: auto; /* Cambiar de height fijo a auto */
+    width: 100%;
+    background: white;
+    color: #3586ff;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.back {
+    background: #3586ff;
+    color: white;
+    transform: rotateY(180deg);
+    max-height: 100%; /* Añadir un max-height */
+}
+
+.front p {
+    
+    color: #3586ff;
+    margin: 10px;
+    margin-top: 50px;
+    /* Eliminar margin-top y margin-bottom */
+}
+
+.back p{
+    color: #fff;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+.back ul {
+    color: #fff;
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Eliminar el margen de la lista */
+}
+
+
+/*Estilos Regresion*/
+
+/* Estilos existentes */
+
+.introContainer2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+}
+
+.introTitle2 {
+    color: #3586ff;
+    margin-bottom: 20px; /* Añade margen inferior para ajustar separación */
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto 50px; /* Centra el formulario y añade espacio inferior */
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.btn input[type="file"] {
+    position: absolute;
+    left: 0px;
+    top: 42px;
+    opacity: 0;
+}
+
+.btn{
+    margin-top: 40px;
+}
+
+form input[type="url"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    color: #3586ff;
+    font-size: 16px;
+}
+
+form select{
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    color: #3586ff;
+    font-size: 16px;
+}
+
+
+form input[type="url"]:focus,
+form input[type="number"]:focus,
+form select:focus {
+    outline: none;
+    border-bottom: 2px solid #3586ff;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    background-color: #3586ff;
+    color: white;
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #2a65cc; 
+}
+
+form label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    font-size: 16px;
+    color: #ccc;
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+form label i {
+    margin-right: 10px;
+}
+
+form input:focus ~ label,
+form input:not(:placeholder-shown) ~ label,
+form select:focus ~ label,
+form select:not([value=""]):valid ~ label {
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+    color: #3586ff;
+}
+
+form button  {
+    background: #3586ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background: #2a65cc;
+}
+
