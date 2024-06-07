@@ -6,64 +6,86 @@
 <div class="introContainer2">
     <h2 class="introTitle2">Regression</h2>
 </div>
-<form action="{{ url_for('main.regression', user_id=1) }}" method="POST" enctype="multipart/form-data">
-    <div class="form-group">
-        <button type="button" class="btn">
-            <input type="file" id="dataset" name="dataset" accept=".csv, .xlsx, .xls, .json" class="file-input" onchange="updateFileName(this)" />
-            <i class="fa-solid fa-file-arrow-up" style="font-size: 15px; margin-right: 5px;"></i>Upload File
-        </button>
-        <label for="dataset">Upload Dataset (CSV)</label>
-        <span id="fileStatusIcon"><i class="fa-solid fa-circle-xmark" style="color: red; margin-left: 8px;"></i></span>
-    </div>
-    <div class="form-group">
-        <input type="url" id="url" name="url" placeholder=" " />
-        <label for="url">Or Enter Dataset URL</label>
-    </div>
-    <div class="form-group">
-        <input type="number" id="neurons" name="neurons" min="1" max="1000" placeholder=" " />
-        <label for="neurons">Number of Neurons</label>
-    </div>
-    <div class="form-group">
-        <select id="model" name="model" required>
-            <option value="linear">Linear Regression</option>
-            <option value="polynomial">Polynomial Regression</option>
-            <option value="ridge">Ridge Regression</option>
-            <option value="lasso">Lasso Regression</option>
-        </select>
-        <label for="model" style="color: #ccc; font-size: 16px; margin: 3px;">Select Model Type</label>
-    </div>
-    <div class="form-group">
-        <select id="hidden_activation" name="hidden_activation" required>
-            <option value="relu">ReLU</option>
-            <option value="sigmoid">Sigmoid</option>
-            <option value="tanh">Tanh</option>
-            <option value="linear">Linear</option>
-        </select>
-        <label for="hidden_activation" style="color: #ccc; font-size: 16px; margin: 3px;">Select Hidden Activation Function</label>
-    </div>
-    <div class="form-group">
-        <select id="output_activation" name="output_activation" required>
-            <option value="relu">ReLU</option>
-            <option value="sigmoid">Sigmoid</option>
-            <option value="tanh">Tanh</option>
-            <option value="linear">Linear</option>
-        </select>
-        <label for="output_activation" style="color: #ccc; font-size: 16px; margin: 3px;">Select Output Activation Function</label>
-    </div>
-    <div class="form-group">
-        <input type="number" id="layers" name="layers" min="1" max="10" placeholder=" " />
-        <label for="layers">Number of Hidden Layers</label>
-    </div>
-    <div class="form-group">
-        <input type="number" id="epoch" name="layers" min="1" max="" placeholder=" " />
-        <label for="epoch">Number of Epochs</label>
-    </div>
-    <div id="container">
-        <div class="wrapper">
-            <button class="button" type="submit">Submit</button>
+<div class="form-image-container">
+    <form id="regression-form" action="{{ url_for('main.regression', user_id=1) }}" method="POST" enctype="multipart/form-data" class="form">
+        <div class="form-group">
+            <button type="button" class="btn">
+                <input type="file" id="dataset" name="dataset" accept=".csv, .xlsx, .xls, .json" class="file-input" />
+                <i class="fa-solid fa-file-arrow-up" style="font-size: 15px; margin-right: 5px;"></i>Upload File
+            </button>
+            <label for="dataset">Upload Dataset (CSV, XLSX, XLS, JSON)</label>
+            <span id="fileStatusIcon"><i class="fa-solid fa-circle-xmark" style="color: red; margin-left: 8px;"></i></span>
         </div>
-    </div>    
-</form>
+        <div class="form-group">
+            <input type="url" id="url" name="url" placeholder=" " />
+            <label for="url">Or Enter Dataset URL</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="input_variables_text" name="input_variables_text" placeholder=" " />
+            <label for="input_variables_text">Enter input variables separated by comma</label>
+        </div>
+        <div class="form-group">
+            <input type="text" id="output_variable_text" name="output_variable_text" placeholder=" " />
+            <label for="output_variable_text">Enter output variable</label>
+        </div>
+        <div class="form-group">
+            <select id="model" name="model" required>
+                <option value="linear">Linear Regression</option>
+                <option value="polynomial">Polynomial Regression</option>
+                <option value="ridge">Ridge Regression</option>
+                <option value="lasso">Lasso Regression</option>
+                <option value="neural_network">Neural Network</option>
+            </select>
+            <label for="model">Select Model Type</label>
+        </div>
+        <div class="form-group" id="polynomial-degree-group" style="display: none;">
+            <input type="number" id="degree" name="degree" min="1" placeholder=" " />
+            <label for="degree">Degree (for Polynomial Regression)</label>
+        </div>
+        <div class="form-group" id="alpha-group" style="display: none;">
+            <input type="number" id="alpha" name="alpha" step="0.01" placeholder=" " />
+            <label for="alpha">Alpha (for Ridge/Lasso Regression)</label>
+        </div>
+        <div class="form-group" id="neurons-group" style="display: none;">
+            <input type="number" id="neurons" name="neurons" min="1" max="1000" placeholder=" " />
+            <label for="neurons">Number of Neurons (for Neural Network)</label>
+        </div>
+        <div class="form-group" id="hidden-activation-group" style="display: none;">
+            <select id="hidden_activation" name="hidden_activation">
+                <option value="relu">ReLU</option>
+                <option value="sigmoid">Sigmoid</option>
+                <option value="tanh">Tanh</option>
+                <option value="linear">Linear</option>
+            </select>
+            <label for="hidden_activation">Select Hidden Activation Function (for Neural Network)</label>
+        </div>
+        <div class="form-group" id="output-activation-group" style="display: none;">
+            <select id="output_activation" name="output_activation">
+                <option value="relu">ReLU</option>
+                <option value="sigmoid">Sigmoid</option>
+                <option value="tanh">Tanh</option>
+                <option value="linear">Linear</option>
+            </select>
+            <label for="output_activation">Select Output Activation Function (for Neural Network)</label>
+        </div>
+        <div class="form-group" id="layers-group" style="display: none;">
+            <input type="number" id="layers" name="layers" min="1" max="10" placeholder=" " />
+            <label for="layers">Number of Hidden Layers (for Neural Network)</label>
+        </div>
+        <div class="form-group" id="epochs-group" style="display: none;">
+            <input type="number" id="epochs" name="epochs" min="1" max="1000" placeholder=" " />
+            <label for="epochs">Number of Epochs (for Neural Network)</label>
+        </div>
+        <div id="container">
+            <div class="wrapper">
+                <button class="button" type="submit">Submit</button>
+            </div>
+        </div>    
+    </form>
+    <div class="image">
+        <img src="static/AI1.png" alt="Imagen descriptiva o animación">
+    </div>
+</div>
 
 <script>
     const fileInput = document.getElementById('dataset');
@@ -76,5 +98,82 @@
             fileStatusIcon.innerHTML = '<i class="fa-solid fa-circle-xmark" style="color: red;"></i>';
         }
     });
+
+    document.getElementById('model').addEventListener('change', function () {
+        var modelType = this.value;
+        document.getElementById('polynomial-degree-group').style.display = (modelType === 'polynomial') ? 'block' : 'none';
+        document.getElementById('alpha-group').style.display = (modelType === 'ridge' || modelType === 'lasso') ? 'block' : 'none';
+        document.getElementById('neurons-group').style.display = (modelType === 'neural_network') ? 'block' : 'none';
+        document.getElementById('hidden-activation-group').style.display = (modelType === 'neural_network') ? 'block' : 'none';
+        document.getElementById('output-activation-group').style.display = (modelType === 'neural_network') ? 'block' : 'none';
+        document.getElementById('layers-group').style.display = (modelType === 'neural_network') ? 'block' : 'none';
+        document.getElementById('epochs-group').style.display = (modelType === 'neural_network') ? 'block' : 'none';
+    });
+
+    document.getElementById('regression-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = this;
+        const formData = new FormData(form);
+
+        const inputVariables = formData.get('input_variables_text');
+        const outputVariable = formData.get('output_variable_text');
+        const modelType = formData.get('model');
+
+        if (!inputVariables || !outputVariable) {
+            alert('Please provide input and output variables.');
+            return;
+        }
+
+        if (modelType === 'polynomial' && !formData.get('degree')) {
+            alert('Please provide a degree for Polynomial Regression.');
+            return;
+        }
+
+        if ((modelType === 'ridge' || modelType === 'lasso') && !formData.get('alpha')) {
+            alert('Please provide an alpha value for Ridge/Lasso Regression.');
+            return;
+        }
+
+        if (modelType === 'neural_network') {
+            if (!formData.get('neurons')) {
+                alert('Please provide the number of neurons for Neural Network.');
+                return;
+            }
+            if (!formData.get('hidden_activation')) {
+                alert('Please select a hidden activation function for Neural Network.');
+                return;
+            }
+            if (!formData.get('output_activation')) {
+                alert('Please select an output activation function for Neural Network.');
+                return;
+            }
+            if (!formData.get('layers')) {
+                alert('Please provide the number of hidden layers for Neural Network.');
+                return;
+            }
+            if (!formData.get('epochs')) {
+                alert('Please provide the number of epochs for Neural Network.');
+                return;
+            }
+        }
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                window.location.href = data.redirect;
+            } else {
+                alert('An error occurred while processing your request. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while processing your request. Please try again.');
+        });
+    });
 </script>
+
 {% endblock %}

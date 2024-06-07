@@ -473,8 +473,6 @@ main {
 
 /*Estilos Regresion*/
 
-/* Estilos existentes */
-
 .introContainer2 {
     display: flex;
     flex-direction: column;
@@ -482,21 +480,65 @@ main {
     align-items: center;
     height: auto;
     text-align: center;
-    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+    margin-bottom: 20px;
 }
 
 .introTitle2 {
     color: #3586ff;
-    margin-bottom: 20px; /* Añade margen inferior para ajustar separación */
+    margin-bottom: 20px
 }
 
-form {
-    max-width: 600px;
-    margin: 0 auto 50px; /* Centra el formulario y añade espacio inferior */
-    padding: 20px;
+.form-image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 50px auto;
+    max-width: 1200px;
+    padding: 50px;
     background: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.281);
+    padding-bottom: 70px;
+}
+
+.form-image-container .form {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.form-image-container .image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-image-container .image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-30px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+/* Ajusta los estilos del formulario */
+form {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
 }
 
 .form-group {
@@ -515,6 +557,7 @@ form {
     margin-top: 40px;
 }
 
+form input[type="text"],
 form input[type="url"],
 form input[type="number"] {
     width: 100%;
@@ -537,6 +580,7 @@ form select{
 }
 
 
+form input[type="text"]:focus,
 form input[type="url"]:focus,
 form input[type="number"]:focus,
 form select:focus {

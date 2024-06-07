@@ -8,8 +8,8 @@ def create_app():
     
     with app.app_context():
         # Importar Blueprints
-        from .controllers import user_controller
+        from .routes import user_routes
         # Registrar Blueprints
-        app.register_blueprint(user_controller.bp)
+        app.register_blueprint(user_routes.bp)
         
     return app
